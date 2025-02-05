@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4 class="text-center text-primary fw-bold"> Add New Employee </h4>
+<div class="card p-4 shadow-lg rounded border-0" style="background-color: #f8f9fa;">
+    <form action="/addemployee" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="employeeid" class="form-label fw-semibold">Employee ID</label>
+          <input type="text" name="employeeid" class="form-control" placeholder="Enter Employee ID card number">
+        </div>
+        <div class="mb-3">
+            <label for="employeename" class="form-label fw-semibold">Name</label>
+            <input type="text" name="employeename" class="form-control" placeholder="Enter Name of Employee">
+        </div>
+        <div class="mb-3">
+            <label for="employeeemail" class="form-label fw-semibold">Email</label>
+            <input type="email" name="employeeemail" class="form-control" placeholder="Enter Email Address">
+        </div>
+        <div class="mb-3">
+            <label for="employeeaddress" class="form-label fw-semibold">Address</label>
+            <input type="text" name="employeeaddress" class="form-control" placeholder="Enter Employee Address">
+        </div>
+        <div class="mb-3">
+            <label for="employeephone" class="form-label fw-semibold">Phone</label>
+            <input type="number" name="employeephone" class="form-control" placeholder="Enter Mobile Number">
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary btn-lg shadow-sm">Add Employee</button>
+        </div>
+    </form>    
+</div>
+{% endblock %}

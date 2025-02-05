@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded">
+        <h4 class="text-center text-primary mb-4"><strong>Update Employee Details</strong></h4>
+        <form action="{% if singleemployee.id %}{% url 'doupdateemployee' singleemployee.id %}{% else %}#{% endif %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="employeeid" class="form-label"><strong>Employee ID</strong></label>
+                    <input type="text" name="employeeid" value="{{ singleemployee.employee_id }}" class="form-control border-primary">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="employeename" class="form-label"><strong>Name</strong></label>
+                    <input type="text" name="employeename" value="{{ singleemployee.employee_name }}" class="form-control border-primary">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="employeeemail" class="form-label"><strong>Email</strong></label>
+                    <input type="email" name="employeeemail" value="{{ singleemployee.email }}" class="form-control border-primary">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="employeephone" class="form-label"><strong>Phone</strong></label>
+                    <input type="number" name="employeephone" value="{{ singleemployee.phone }}" class="form-control border-primary">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="employeeaddress" class="form-label"><strong>Address</strong></label>
+                <input type="text" name="employeeaddress" value="{{ singleemployee.address }}" class="form-control border-primary">
+            </div>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-lg btn-success px-4">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

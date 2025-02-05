@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container py-4">
+        <div class="card shadow-lg rounded">
+            <div class="card-header bg-primary text-white">
+                <h5 class="text-decoration-underline">List of Employees</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover text-center align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">DB ID</th>
+                            <th scope="col">Employee ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col" colspan="2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if allemployees %}
+                            {% for eachemployee in allemployees %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ eachemployee.id }}</td>
+                                    <td>{{ eachemployee.employee_id }}</td>
+                                    <td>{{ eachemployee.employee_name }}</td>
+                                    <td>{{ eachemployee.email }}</td>
+                                    <td>{{ eachemployee.address }}</td>
+                                    <td>{{ eachemployee.phone }}</td>
+                                    <td>
+                                        <a href="{% url 'updateemployee' eachemployee.id %}" 
+                                           class="btn btn-outline-info btn-sm">
+                                            <i class="bi bi-pencil-square"></i> Update
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'deleteemployee' eachemployee.id %}" 
+                                           class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="9" class="text-muted">No employees found.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
